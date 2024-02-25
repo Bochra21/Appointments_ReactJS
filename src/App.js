@@ -1,15 +1,23 @@
 //import './App.css';
 import React from "react";
-import Login from "./pages/auth/loginPage/Login";
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
+/////////////////////////////////   Project imports   //////////////////////////
+//importing users
+import users from "./users"
 
 // defaultTheme
 import themes from './themes';
 
-function App() {
+// routes import
+import Routes from './routes'
+
+function App() 
+{
 
   // const customization = useSelector((state) => state.customization);
+  const usersList = users;
+  console.log(usersList)
 
   return (
     <>
@@ -17,11 +25,14 @@ function App() {
       {/* <ThemeProvider theme={themes(customization)}> */}
       <ThemeProvider  theme={themes}>
         <CssBaseline />
-      <Login/>
+         {/* Add navbar. inside of it , routes */}
+         <Routes/>
       </ThemeProvider>
       </StyledEngineProvider>
     </>
   );
+
+  
 }
 
 export default App;

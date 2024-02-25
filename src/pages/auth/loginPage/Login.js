@@ -15,12 +15,17 @@ import LoginContent from "./LoginContent";
 
 // ================================|| AUTH3 - LOGIN ||================================ //
 
-const Login = () => {
+const Login = () => 
+
+{
+
   const theme = useTheme();
+
   const matchDownSM = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <AuthWrapper1>
+    
       <Grid
         container
         direction="column"
