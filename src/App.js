@@ -17,7 +17,10 @@ function App()
 
   // const customization = useSelector((state) => state.customization);
   const usersList = users;
-  console.log(usersList)
+  console.log(usersList);
+  // const current_user=users.doctor;
+  const current_user=users.patient;
+  // const current_user=users.visitor;
 
   return (
     <>
@@ -26,7 +29,7 @@ function App()
       <ThemeProvider  theme={themes}>
         <CssBaseline />
          {/* Add navbar. inside of it , routes */}
-         <Routes/>
+         <Routes current_user={current_user} />
       </ThemeProvider>
       </StyledEngineProvider>
     </>

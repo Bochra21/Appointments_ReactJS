@@ -1,13 +1,15 @@
-import { lazy } from 'react';
+import { lazy } from "react";
 
 // project imports
-import MainLayout from './../layout/MainLayout/index';
-import Loadable from './../components/loadable/Loadable';
+import MainLayout from "./../layout/MainLayout/index";
+import Loadable from "./../components/loadable/Loadable";
 
-// doctor routing 
-const Doctor = Loadable(lazy(()=> import ('./../pages/doctor/DoctorIndex') ));
-// Patient routing 
-const Patient = Loadable(lazy(()=> import ('./../pages/patient/PatientIndex') ));
+// doctor routing
+const Doctor = Loadable(lazy(() => import("./../pages/doctor/DoctorIndex")));
+// Patient routing
+const Patient = Loadable(lazy(() => import("./../pages/patient/PatientIndex")));
+//Page not found
+const PageNotFound = Loadable(lazy(() => import("./../pages/PageNotFound")));
 
 // dashboard routing
 // const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
@@ -24,28 +26,40 @@ const Patient = Loadable(lazy(()=> import ('./../pages/patient/PatientIndex') ))
 
 // ==============================|| MAIN ROUTING ||============================== //
 
-const MainRoutes = {
-  path: '/main',
-  element: <MainLayout />,
-  children: [
-    // {
-    //   path: 'icons',
-    //   children: [
-    //     {
-    //       path: 'material-icons',
-    //       element: <UtilsMaterialIcons />
-    //     }
-    //   ]
-    // },
-    {
-      path: 'doctor',
-      element: <Doctor />
-    },
-    {
-      path: 'patient',
-      element: <Patient />
-    },
-  ]
+const isDoctor = (currentUser) => 
+{
+  // Add your logic to determine if the current user is a doctor
+  return currentUser === 'doctor'; // Replace this with your actual logic
+};
+
+const MainRoutes = (current_user) => 
+{
+
+  const doctorAccess = isDoctor(current_user);
+
+  return {
+    path: "/main",
+    element: <MainLayout />,
+    children: [
+      // {
+      //   path: 'icons',
+      //   children: [
+      //     {
+      //       path: 'material-icons',
+      //       element: <UtilsMaterialIcons />
+      //     }
+      //   ]
+      // },
+      {
+        path: "doctor",
+        element: doctorAccess ? <Doctor /> : <PageNotFound/> ,
+      },
+      {
+        path: "patient",
+        element: <Patient />,
+      },
+    ],
+  };
 };
 
 export default MainRoutes;
