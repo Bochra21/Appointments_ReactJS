@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // material-ui
 import { useTheme } from "@mui/material/styles";
@@ -96,8 +96,8 @@ const Login = () =>
                       xs={12}
                     >
                       <Typography
-                        // component={Link}
-                        to="/pages/register/register3"
+                        component={Link}
+                        to="/signup"
                         variant="subtitle1"
                         sx={{ textDecoration: "none" }}
                       >

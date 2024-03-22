@@ -8,7 +8,7 @@ import { Outlet } from 'react-router-dom';
 const MinimalLayout = () => (
   <>
     <Outlet />
-   minimal layout
+   
   </>
 );
 

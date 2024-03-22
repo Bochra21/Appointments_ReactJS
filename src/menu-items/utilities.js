@@ -1,70 +1,84 @@
-// assets
-import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons-react';
+import { IconSearch, IconCalendarClock, IconBell } from "@tabler/icons-react";
 
-// constant
+
+// Constant for icons
 const icons = {
-  IconTypography,
-  IconPalette,
-  IconShadow,
-  IconWindmill
+  IconSearch,
+  IconCalendarClock,
+  IconBell,
 };
 
-// ==============================|| UTILITIES MENU ITEMS ||============================== //
+// Determine utilities based on user role
 
-const utilities = {
-  id: 'utilities',
-  title: 'Utilities',
-  type: 'group',
-  children: [
-    {
-      id: 'util-typography',
-      title: 'Typography',
-      type: 'item',
-      url: '/utils/util-typography',
-      icon: icons.IconTypography,
-      breadcrumbs: false
-    },
-    {
-      id: 'util-color',
-      title: 'Color',
-      type: 'item',
-      url: '/utils/util-color',
-      icon: icons.IconPalette,
-      breadcrumbs: false
-    },
-    {
-      id: 'util-shadow',
-      title: 'Shadow',
-      type: 'item',
-      url: '/utils/util-shadow',
-      icon: icons.IconShadow,
-      breadcrumbs: false
-    },
-    {
-      id: 'icons',
-      title: 'Icons',
-      type: 'collapse',
-      icon: icons.IconWindmill,
-      children: [
-        {
-          id: 'tabler-icons',
-          title: 'Tabler Icons',
-          type: 'item',
-          url: '/icons/tabler-icons',
-          breadcrumbs: false
-        },
-        {
-          id: 'material-icons',
-          title: 'Material Icons',
-          type: 'item',
-          external: true,
-          target: '_blank',
-          url: 'https://mui.com/material-ui/material-icons/',
-          breadcrumbs: false
-        }
-      ]
-    }
-  ]
-};
 
-export default utilities;
+  // Define utilities based on user role
+  export const docUtilities = {
+    id: "utilities1",
+    title: "",
+    type: "group",
+    children: 
+       [
+          {
+            id: "util-typography",
+            title: "My calendar",
+            type: "item",
+            url: "/utils/util-typography",
+            icon: icons.IconSearch,
+            breadcrumbs: false,
+          },
+          {
+            id: "util-color",
+            title: "Manage appointments",
+            type: "item",
+            url: "/utils/util-color",
+            icon: icons.IconCalendarClock,
+            breadcrumbs: false,
+          },
+          {
+            id: "util-shadow",
+            title: "Alerts",
+            type: "item",
+            url: "/utils/util-shadow",
+            icon: icons.IconBell,
+            breadcrumbs: false,
+          },
+        ]
+     
+  };
+
+  export const patUtilities = {
+    id: "utilities",
+    title: "",
+    type: "group",
+    children: 
+       [
+          {
+            id: "util-typography",
+            title: "Find doctor",
+            type: "item",
+            url: "/utils/util-typography",
+            icon: icons.IconSearch,
+            breadcrumbs: false,
+          },
+          {
+            id: "util-color",
+            title: "My appointments",
+            type: "item",
+            url: "/utils/util-color",
+            icon: icons.IconCalendarClock,
+            breadcrumbs: false,
+          },
+          {
+            id: "util-shadow",
+            title: "Alerts",
+            type: "item",
+            url: "/utils/util-shadow",
+            icon: icons.IconBell,
+            breadcrumbs: false,
+          },
+        ]
+     
+  };
+
+
+

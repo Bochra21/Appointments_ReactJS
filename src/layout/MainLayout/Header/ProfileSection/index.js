@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -43,7 +43,7 @@ import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons-re
 
 const ProfileSection = () => {
   const theme = useTheme();
-  // const customization = useSelector((state) => state.customization);
+  const customization = useSelector((state) => state.customization);
   const navigate = useNavigate();
 
   const [sdm, setSdm] = useState(true);
@@ -246,7 +246,7 @@ const ProfileSection = () => {
                         }}
                       >
                         <ListItemButton
-                          // sx={{ borderRadius: `${customization.borderRadius}px` }} 
+                          sx={{ borderRadius: `${customization.borderRadius}px` }} 
                           selected={selectedIndex === 0}
                           onClick={(event) => handleListItemClick(event, 0, '#')}
                         >
@@ -256,7 +256,7 @@ const ProfileSection = () => {
                           <ListItemText primary={<Typography variant="body2">Account Settings</Typography>} />
                         </ListItemButton>
                         <ListItemButton
-                          // sx={{ borderRadius: `${customization.borderRadius}px` }}
+                          sx={{ borderRadius: `${customization.borderRadius}px` }}
                           selected={selectedIndex === 1}
                           onClick={(event) => handleListItemClick(event, 1, '#')}
                         >
@@ -284,7 +284,7 @@ const ProfileSection = () => {
                           />
                         </ListItemButton>
                         <ListItemButton
-                          // sx={{ borderRadius: `${customization.borderRadius}px` }}
+                          sx={{ borderRadius: `${customization.borderRadius}px` }}
                           selected={selectedIndex === 4}
                           onClick={handleLogout}
                         >

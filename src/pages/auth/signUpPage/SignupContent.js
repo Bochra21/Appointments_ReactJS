@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 // import { Link } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -42,7 +42,7 @@ const SignupContent = ({ ...others }) => {
   const theme = useTheme();
   const scriptedRef = useScriptRef();
   const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
-//   const customization = useSelector((state) => state.customization);
+  const customization = useSelector((state) => state.customization);
   const [showPassword, setShowPassword] = useState(false);
   const [checked, setChecked] = useState(true);
 
@@ -107,7 +107,7 @@ const SignupContent = ({ ...others }) => {
                 borderColor: `${theme.palette.grey[100]} !important`,
                 color: `${theme.palette.grey[900]}!important`,
                 fontWeight: 500,
-                // borderRadius: `${customization.borderRadius}px`
+                borderRadius: `${customization.borderRadius}px`
               }}
               disableRipple
               disabled
