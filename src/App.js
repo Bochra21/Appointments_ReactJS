@@ -20,9 +20,9 @@ function App() {
     // Authenticate the user
     dispatch(setAuthenticated());
     // change user role to doctor
-   // dispatch(setDoctor());
+    dispatch(setDoctor());
     // change user role to patient
-    dispatch(setPatient());
+   // dispatch(setPatient());
   }, [dispatch]);
 
   // Use useReducer hook to manage state with userReducer

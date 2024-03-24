@@ -12,12 +12,10 @@ import {
 } from "@mui/material";
 
 // project imports
-import Breadcrumbs from "./../../components/Breadcrumbs";
+
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-// import Customization from '../Customization';
-//import nav from "./../../menu-items";
-import { docUtilities, patUtilities } from './../../menu-items/utilities';
+
 import { drawerWidth } from "./../../store/constant";
 import { SET_MENU } from "./../../store/actions";
 
@@ -65,24 +63,7 @@ const Main = styled("main", {
 const MainLayout = () => {
   // Dynamic import of menu-items :
 
-  const nav = useSelector((state) => {
-    const userType = state.userReducer.role;
-    if (isDoctor(userType)) {
-      console.log("Sidebar alert : It is a Doctot");
-      const docUtility = [docUtilities] ;
-      console.log("docUtility : ",docUtility);
-      return [docUtility]; // Import docUtilities if user is a doctor
-    } else if (isPatient(userType)) { 
-      console.log("Sidebar alert : It is a Patient"); //S7I7A
-      const patUtility = [patUtilities] //s7i7a
-      console.log("patUtility : ",patUtility);
-      return patUtility; 
-      // Import patUtilities if user is a patient
-    } else {
-      console.log("Sidebar returning an empty array , user's role is not defined or invalid")
-      return []; // Return empty array if user's role is not defined or invalid
-    }
-  });
+
   // Get current user
   // const userType = useSelector((state)=> state.userReducer.role )
   // //
@@ -119,7 +100,7 @@ const MainLayout = () => {
 
       {/* drawer */}
       <Sidebar
-        nav={nav}
+     
         drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened}
         drawerToggle={handleLeftDrawerToggle}
       />
@@ -127,14 +108,8 @@ const MainLayout = () => {
       {/* main content */}
       <Main theme={theme} open={leftDrawerOpened}>
         {/* breadcrumb */}
-        {console.log("nav content in the index of Sidebar",nav)}
-        {/* <Breadcrumbs
-          separator={IconChevronRight}
-        //  nav={nav}
-          icon
-          title
-          rightAlign
-        /> */}
+       
+     
         <Outlet />
       </Main>
       {/* <Customization /> */}
