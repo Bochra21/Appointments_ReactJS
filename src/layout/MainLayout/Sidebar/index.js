@@ -79,7 +79,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
         ModalProps={{ keepMounted: true }}
         color="inherit"
       >
-        {drawer}
+        {drawer} 
       </Drawer>
     </Box>
   );
