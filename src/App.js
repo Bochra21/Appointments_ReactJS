@@ -18,9 +18,9 @@ function App() {
 
   useEffect(() => {
     // Authenticate the user
-    dispatch(setAuthenticated());
+   // dispatch(setAuthenticated());
     // change user role to doctor
-    dispatch(setDoctor());
+   // dispatch(setDoctor());
     // change user role to patient
    // dispatch(setPatient());
   }, [dispatch]);

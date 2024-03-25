@@ -12,7 +12,7 @@ const AuthRegister = Loadable(lazy(() => import('./../pages/auth/signUpPage/Sign
 
 const AuthenticationRoutes = {
   path: '/',
- element: <AuthLogin />,
+ element: <AuthRegister />,
 
   children: [
     {
