@@ -28,6 +28,7 @@ import { Formik } from 'formik';
 // project imports
 import useScriptRef from '../../../hooks/UseScriptRef'
 import AnimateButton from '../../../components/buttons/AnimateButton';
+import {logInUser} from "../../../services/authSercices";
 
 // assets
 import Visibility from '@mui/icons-material/Visibility';
@@ -120,7 +121,7 @@ const LoginContent = ({ ...others }) => {
 
       <Formik
         initialValues={{
-          email: 'info@codedthemes.com',
+          email: 'example@gmail.com',
           password: '123456',
           submit: null
         }}
@@ -130,6 +131,27 @@ const LoginContent = ({ ...others }) => {
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
+
+            const {email,password} = values ;
+
+            const data = {
+              email : email ,
+              password : password
+            } 
+            console.log("data",data);
+            const res = logInUser(data);
+
+
+            if( res.status === 200) 
+            {
+              console.log("login success");
+              console.log("token = ", Cookies.get("bochra") );
+              // Retrieve the token from the cookie
+              
+              // Save token to redux 
+
+            }
+
             if (scriptedRef.current) {
               setStatus({ success: true });
               setSubmitting(false);
@@ -155,7 +177,7 @@ const LoginContent = ({ ...others }) => {
                 name="email"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                label="Email Address / Username"
+                label="Email"
                 inputProps={{}}
               />
               {touched.email && errors.email && (

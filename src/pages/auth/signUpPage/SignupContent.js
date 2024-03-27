@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-// import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
-
+import { redirect } from 'react-router-dom';
 // material-ui
 import { useTheme } from "@mui/material/styles";
 import {
@@ -52,7 +51,8 @@ const SignupContent = ({ ...others }) => {
   const customization = useSelector((state) => state.customization);
   const [showPassword, setShowPassword] = useState(false);
   const [checked, setChecked] = useState(true);
-
+  // To redirect to sign in when sign up succeded
+  const [redirectToLogin,setRedirect] = useState(false);
   const [strength, setStrength] = useState(0);
   const [level, setLevel] = useState();
 
@@ -78,6 +78,9 @@ const SignupContent = ({ ...others }) => {
     changePassword("123456");
   }, []);
 
+  if (redirectToLogin) {
+    return redirect("/");
+  }
   return (
     <>
       <Grid container direction="column" justifyContent="center" spacing={2}>
@@ -198,7 +201,10 @@ const SignupContent = ({ ...others }) => {
             console.log("data", data);
             // Call signUpUser function with the data object
             const res = await signUpUser(data);
-
+            if (res.status === 200)
+            { // Redirect to sign in
+             setRedirect(true);
+            }
             console.log("res : ", res);
 
             if (scriptedRef.current) {
