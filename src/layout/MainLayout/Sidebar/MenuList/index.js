@@ -13,8 +13,9 @@ const MenuList = () => {
 
   const FilteredMenuItem = useSelector((state) => {
     const userType = state.userReducer.role;
+    console.log("** Menu list index : userType = ",userType);
     if (isDoctor(userType)) {
-      console.log("Sidebar alert : It is a Doctot");
+      console.log("Sidebar alert : It is a Doctor");
       const docUtility = [docUtilities] ;
       console.log("docUtility : ",docUtility);
       return docUtility; // Import docUtilities if user is a doctor

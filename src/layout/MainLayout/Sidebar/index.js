@@ -11,6 +11,7 @@ import { BrowserView, MobileView } from 'react-device-detect';
 // project imports
 import MenuList from './MenuList';
 import LogoSection from '../LogoSection';
+import OutlinedButton from '../../../components/buttons/OutlinedButton'
 // import MenuCard from './MenuCard';
 import { drawerWidth } from './../../../store/constant';
 
@@ -36,8 +37,11 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
             paddingRight: '16px'
           }}
         >
-          <MenuList />
-          {/* <MenuCard /> */}
+          {/* <MenuList /> */}
+
+         
+        
+            {/* <MenuCard /> */}
           <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
             <Chip label={process.env.REACT_APP_VERSION} disabled chipcolor="secondary" size="small" sx={{ cursor: 'pointer' }} />
           </Stack>

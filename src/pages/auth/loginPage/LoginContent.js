@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector ,  useDispatch  } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -25,10 +25,15 @@ import {
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 
+
 // project imports
 import useScriptRef from '../../../hooks/UseScriptRef'
 import AnimateButton from '../../../components/buttons/AnimateButton';
 import {logInUser} from "../../../services/authSercices";
+import {
+  setDoctor,
+  setPatient,
+} from "./../../../utils/auth-functions";
 
 // assets
 import Visibility from '@mui/icons-material/Visibility';
@@ -57,7 +62,11 @@ const LoginContent = ({ ...others }) => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  const dispatch = useDispatch();
 
+  
+  console.log(useSelector((state) => state.userReducer.token));
+  
   return (
     <>
       <Grid container direction="column" justifyContent="center" spacing={2}>
@@ -138,20 +147,28 @@ const LoginContent = ({ ...others }) => {
               email : email ,
               password : password
             } 
-            console.log("data",data);
-            const res = logInUser(data);
+            console.log("data to send to the server",data);
+            const res = await logInUser(data);
 
+            // const token = Cookies.get("bochra")
+            // console.log("token = ",token);
 
-            if( res.status === 200) 
-            {
-              console.log("login success");
-              console.log("token = ", Cookies.get("bochra") );
-              // Retrieve the token from the cookie
-              
-              // Save token to redux 
-
-            }
-
+            // By default response contain status but we can access other things like data 
+           if(res === 200){
+            console.log("login success !");
+           
+           }
+              // Retrieve the role from the response 
+              console.log("role",res.data.roles);
+              const role = res.data.roles[0];
+              // Save role to redux 
+              if (role === "Role_DOCTOR")
+              { 
+                dispatch(setDoctor());}
+              else if (role === "ROLE_PATIENT")
+              { 
+                dispatch(setPatient());}
+               
             if (scriptedRef.current) {
               setStatus({ success: true });
               setSubmitting(false);
