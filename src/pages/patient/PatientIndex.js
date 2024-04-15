@@ -4,8 +4,8 @@ import DoctorCard from "../../components/cards/doctorCard";
 import AnimateButton from "../../components/buttons/AnimateButton";
 import Grid from "@mui/material/Grid";
 
-
 import { Button } from "@mui/material";
+import PatientView from "../doctor/PatientView";
 
 const PatientIndex = () => {
   const specialities = [
@@ -56,7 +56,6 @@ const PatientIndex = () => {
             alignItems: "center",
           }}
         >
-            
           <AnimateButton>
             <Button
               disableElevation
@@ -65,15 +64,17 @@ const PatientIndex = () => {
               type="submit"
               variant="contained"
               color="secondary"
-              sx={{ width: "30%", m: "7px",pr:"10px" }} // Adjust width and padding as needed
+              sx={{ width: "30%", m: "7px", pr: "10px" }} // Adjust width and padding as needed
             >
-           Search
+              Search
             </Button>
           </AnimateButton>
         </Grid>
       </Grid>
       <br />
       <DoctorCard></DoctorCard>
+      {/* just to test : */}
+      {/* <PatientView/> */}
     </div>
   );
 };

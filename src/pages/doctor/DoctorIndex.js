@@ -1,9 +1,13 @@
 import React from 'react';
+import DoctorProfile from './DoctorProfile';
+
 
 const DoctorIndex = () => {
     return (
-        <div>
-            <h2> Hello Doctor! </h2>
+        <div >
+           
+            <DoctorProfile></DoctorProfile>
+          
         </div>
     );
 }

@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 const SearchBar = (props) => {
   const { specialities, cities } = props;
   return (
-    <div>
+    <div >
       <div
         style={{ color: "#71797E", display: "flex", justifyContent: "center" }}
       >
@@ -64,7 +64,7 @@ const SearchBar = (props) => {
             </Grid>
           </Grid>
         </Box>
-      </div>
+      </div> 
     </div>
   );
 };

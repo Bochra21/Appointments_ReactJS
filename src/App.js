@@ -23,9 +23,9 @@ function App() {
   //   // Authenticate the user
   //  
   //   // change user role to doctor
-//dispatch(setDoctor());
+dispatch(setDoctor());
   //   // change user role to patient
-  dispatch(setPatient());
+  //dispatch(setPatient());
   //dispatch(logoutUser());
    }, [dispatch]);
 
