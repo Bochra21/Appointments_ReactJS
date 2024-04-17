@@ -1,4 +1,4 @@
-import { IconSearch, IconCalendarClock, IconBell } from "@tabler/icons-react";
+import { IconSearch,IconUserCircle, IconCalendarClock, IconBell } from "@tabler/icons-react";
 
 
 // Constant for icons
@@ -6,6 +6,7 @@ const icons = {
   IconSearch,
   IconCalendarClock,
   IconBell,
+  IconUserCircle
 };
 
 // Determine utilities based on user role
@@ -18,19 +19,27 @@ const icons = {
     type: "group",
     children: 
        [
+        {
+          id: "util-typography",
+          title: "Mon profil",
+          type: "item",
+          url: "/",
+          icon: icons.IconUserCircle,
+          breadcrumbs: false,
+        },
           {
-            id: "util-typography",
-            title: "My calendar",
+            id: "util-typography2",
+            title: "Mon calendrier",
             type: "item",
-            url: "/utils/util-typography",
+            url: "/doctorCalendar",
             icon: icons.IconSearch,
             breadcrumbs: false,
           },
           {
             id: "util-color",
-            title: "Manage appointments",
+            title: "Mes rendez-vous",
             type: "item",
-            url: "/utils/util-color",
+            url: "/DoctorAppointments",
             icon: icons.IconCalendarClock,
             breadcrumbs: false,
           },
@@ -54,25 +63,25 @@ const icons = {
        [
           {
             id: "util-typography",
-            title: "Find doctor",
+            title: "Recherche",
             type: "item",
-            url: "/utils/util-typography",
+            url: "/",
             icon: icons.IconSearch,
             breadcrumbs: false,
           },
           {
             id: "util-color",
-            title: "My appointments",
+            title: "Mes rendez-vous",
             type: "item",
-            url: "/utils/util-color",
+            url: "/PatientAppointments",
             icon: icons.IconCalendarClock,
             breadcrumbs: false,
           },
           {
             id: "util-shadow",
-            title: "Alerts",
+            title: "Alertes",
             type: "item",
-            url: "/utils/util-shadow",
+            url: "/",
             icon: icons.IconBell,
             breadcrumbs: false,
           },

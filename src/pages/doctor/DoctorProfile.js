@@ -9,6 +9,10 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { MuiTelInput } from "mui-tel-input";
 import CountrySelect from "../../components/CountrySelect";
 import MultiTextFieldForm from "../../components/multiTextField";
+import AnimateButton from "../../components/buttons/AnimateButton";
+import EditOpenTimes from "../../components/EditOpenTimes";
+// import OpenTimeTable from "../../components/EditOpenTimes";
+// import { TableCell } from "@mui/material";
 
 const DoctorProfile = () => {
   const specialities = [
@@ -58,10 +62,10 @@ const DoctorProfile = () => {
                 Téléphone(s)
               </Grid>
               <Grid item xs={12} md={6}>
-                <MultiTextFieldForm buttonTitle={"Ajouter un numéro de téléphone "}>
-                  <MuiTelInput
-                   
-                  />
+                <MultiTextFieldForm
+                  buttonTitle={"Ajouter un numéro de téléphone "}
+                >
+                  <MuiTelInput />
                 </MultiTextFieldForm>
                 {/* <MultiTextFieldForm addButtonLabel={"Ajouter un numéro de téléphone"} textFieldLabel={"Numéro de téléphone"} /> */}
               </Grid>
@@ -96,22 +100,26 @@ const DoctorProfile = () => {
                 Adresse
               </Grid>
               <Grid item xs={12} md={6}>
-                <Autocomplete
-                  id="tags-filled"
-                  options={specialities.map((option) => option.label)}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      id="filled-hidden-label-small"
-                      defaultValue=" "
-                      size="small"
-                      placeholder="L'adresse de votre cabinet"
-                      sx={{ width: "70%" }}
-                    />
-                  )}
+                <TextField
+                  id="filled-hidden-label-small"
+                  defaultValue=" "
+                  size="small"
+                  placeholder="L'adresse de votre cabinet"
+                  sx={{ width: "70%" }}
                 />
               </Grid>
             </Grid>
+
+            <AnimateButton>
+              <Button
+                size="small"
+                type="submit"
+                variant="contained"
+                color="secondary"
+              >
+                Save
+              </Button>
+            </AnimateButton>
           </Box>
         </MyAccordion>
 
@@ -161,15 +169,26 @@ const DoctorProfile = () => {
                 Assurance(s)
               </Grid>
               <Grid item xs={12} md={6}>
-              <MultiTextFieldForm buttonTitle={"Ajouter une assurance "}>
-              <TextField
-                  hiddenLabel
-                  id="filled-hidden-label-small"
-                  size="small"
-                  placeholder="Nom de l'assurance"
-                  sx={{ width: "70%" }}
-                />
-              </MultiTextFieldForm>
+                <MultiTextFieldForm buttonTitle={"Ajouter une assurance "}>
+                  <TextField
+                    hiddenLabel
+                    id="filled-hidden-label-small"
+                    size="small"
+                    placeholder="Nom de l'assurance"
+                    sx={{ width: "70%" }}
+                  />
+                </MultiTextFieldForm>
+              </Grid>
+            </Grid>
+            <br></br>
+
+            <Grid container spacing={2} sx={{ marginTop: "3px" }}>
+              <Grid sx={{ width: "30%", margin: "10px" }} item xs={12} md={4}>
+                Horaires d'ouverture
+              </Grid>
+              <Grid item xs={12} md={6}>
+                {/* open time table */}
+                <EditOpenTimes></EditOpenTimes>
               </Grid>
             </Grid>
           </Box>

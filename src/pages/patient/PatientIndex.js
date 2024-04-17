@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 import SearchBar from "../../components/searchBar";
 import DoctorCard from "../../components/cards/doctorCard";
 import AnimateButton from "../../components/buttons/AnimateButton";
@@ -72,7 +73,9 @@ const PatientIndex = () => {
         </Grid>
       </Grid>
       <br />
-      <DoctorCard></DoctorCard>
+      <Link to="/doctorProfile">
+        <DoctorCard />
+      </Link>
       {/* just to test : */}
       {/* <PatientView/> */}
     </div>

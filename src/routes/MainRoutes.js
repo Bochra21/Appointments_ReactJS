@@ -5,9 +5,13 @@ import MainLayout from "./../layout/MainLayout/index";
 import Loadable from "./../components/loadable/Loadable";
 
 // doctor routing
-const Doctor = Loadable(lazy(() => import("./../pages/doctor/DoctorIndex")));
+const Doctor = Loadable(lazy(() => import("./../pages/doctor/DoctorProfile")));
+const DoctorCalendar = Loadable(lazy(() => import("./../pages/doctor/DoctorCalendar")));
+const DoctorAppointments = Loadable(lazy(() => import("./../pages/doctor/DoctorAppointments")));
 // Patient routing
 const Patient = Loadable(lazy(() => import("./../pages/patient/PatientIndex")));
+const PatientViewDoctor = Loadable(lazy(() => import("./../pages/doctor/PatientView")));
+const PatientAppointments = Loadable(lazy(() => import("./../pages/patient/PatientAppointments")));
 //Page not found
 const PageNotFound = Loadable(lazy(() => import("./../pages/PageNotFound")));
 
@@ -41,11 +45,28 @@ const MainRoutes = (current_user_role) =>
       {
         path: "/", // Leave the path for the main route empty
         element: doctorAccess ? <Doctor /> : patientAccess ? <Patient /> : <PageNotFound/>,
-      }
-      // {
-      //   path: "doctor",
-      //   element: doctorAccess ? <Doctor /> : <PageNotFound/> ,
-      // },
+      },
+      // --------------------- Doctor:
+      {
+        path: "doctorCalendar",
+        element: doctorAccess ? <DoctorCalendar /> : <PageNotFound/> ,
+      },
+      {
+        //doctorProfile from patient view
+        path : "DoctorAppointments", 
+        element : doctorAccess ? <DoctorAppointments /> : <PageNotFound/> 
+      },
+      //  -------------------- patient
+      {
+        //doctorProfile from patient view
+        path : "doctorProfile", 
+        element : patientAccess ? <PatientViewDoctor /> : <PageNotFound/> 
+      },
+      {
+        path : "PatientAppointments", 
+        element : patientAccess ? <PatientViewDoctor /> : <PageNotFound/> 
+      },
+     
       // {
       //   path: "patient",
       //   element: patientAccess ? <Patient />: <PageNotFound/> ,
