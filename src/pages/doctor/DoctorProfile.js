@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MyAccordion from "../../components/Accordion";
 import AccordionActions from "@mui/material/AccordionActions";
 import Button from "@mui/material/Button";
@@ -21,11 +21,13 @@ const DoctorProfile = () => {
     { label: "Orthopedics" },
     { label: "Neurology" },
   ];
-  const [value, setValue] = React.useState("");
+  //Profile data
+  const [speciality, setSpeciality] = useState({ label: "Dentistry" });
+  const [education, setEducation] = useState("");
+  const [insurance, setInsurance] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("");
+  const [phoneNumbers, setPhoneNumbers] = useState([]);
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
   return (
     <>
       <div
@@ -40,18 +42,45 @@ const DoctorProfile = () => {
         }}
       >
         {/* Accordion 1 */}
-        <MyAccordion title={"Informations Personnelles"}>
+        <MyAccordion title={"Profil"}>
           <Box>
             <Grid container spacing={2} sx={{ marginTop: "3px" }}>
               <Grid sx={{ width: "30%", margin: "10px" }} item xs={12} md={4}>
-                Nom et Prénom
+                Spécialité
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Autocomplete
+                  id="speciality-autocomplete"
+                  freeSolo
+                  sx={{ width: "70%" }}
+                  options={specialities}
+                  getOptionLabel={(option) => option.label}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Specialité" />
+                  )}
+                  // renderInput={(params) => (
+                  //   // <TextField
+                  //   //   {...params}
+                  //   //   label="Spécialité"
+                  //   //   size="small"
+                  //   //   sx={{ width: "70%" }}
+                  //   // />
+                  // )}
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container spacing={2} sx={{ marginTop: "3px" }}>
+              <Grid sx={{ width: "30%", margin: "10px" }} item xs={12} md={4}>
+                Éducation
               </Grid>
               <Grid item xs={12} md={6}>
                 <TextField
                   hiddenLabel
+                  multiline
                   id="filled-hidden-label-small"
                   size="small"
-                  placeholder="Foulen Ben Foulen"
+                  placeholder="Dites-nous où avez-vous étudié, quand et d'où avez-vous obtenu votre diplôme"
                   sx={{ width: "70%" }}
                 />
               </Grid>
@@ -59,7 +88,41 @@ const DoctorProfile = () => {
 
             <Grid container spacing={2} sx={{ marginTop: "3px" }}>
               <Grid sx={{ width: "30%", margin: "10px" }} item xs={12} md={4}>
-                Téléphone(s)
+                Assurance(s)
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <MultiTextFieldForm buttonTitle={"Ajouter une assurance "}>
+                  <TextField
+                    hiddenLabel
+                    id="filled-hidden-label-small"
+                    size="small"
+                    placeholder="Nom de l'assurance"
+                    sx={{ width: "70%" }}
+                  />
+                </MultiTextFieldForm>
+              </Grid>
+            </Grid>
+
+            <Grid container spacing={2} sx={{ marginTop: "3px" }}>
+              <Grid sx={{ width: "30%", margin: "10px" }} item xs={12} md={4}>
+                Méthode(s) de paiement
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <MultiTextFieldForm buttonTitle={"Ajouter une méthode"}>
+                  <TextField
+                    hiddenLabel
+                    id="filled-hidden-label-small"
+                    size="small"
+                    placeholder="Méthode"
+                    sx={{ width: "70%" }}
+                  />
+                </MultiTextFieldForm>
+              </Grid>
+            </Grid>
+
+            <Grid container spacing={2} sx={{ marginTop: "3px" }}>
+              <Grid sx={{ width: "30%", margin: "10px" }} item xs={12} md={4}>
+                Téléphone(s) Personnel(s)
               </Grid>
               <Grid item xs={12} md={6}>
                 <MultiTextFieldForm
@@ -71,6 +134,22 @@ const DoctorProfile = () => {
               </Grid>
             </Grid>
 
+            <AnimateButton>
+              <Button
+                size="small"
+                type="submit"
+                variant="contained"
+                color="secondary"
+              >
+                Save
+              </Button>
+            </AnimateButton>
+          </Box>
+        </MyAccordion>
+
+        {/* Accordion 2 */}
+        <MyAccordion title={"Cabinet"}>
+          <Box>
             <Grid container spacing={2} sx={{ marginTop: "3px" }}>
               <Grid sx={{ width: "30%", margin: "10px" }} item xs={12} md={4}>
                 Pays
@@ -109,7 +188,20 @@ const DoctorProfile = () => {
                 />
               </Grid>
             </Grid>
-
+            <Grid container spacing={2} sx={{ marginTop: "3px" }}>
+              <Grid sx={{ width: "30%", margin: "10px" }} item xs={12} md={4}>
+                Téléphone(s)
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <MultiTextFieldForm
+                  buttonTitle={"Ajouter un numéro de téléphone "}
+                >
+                  <MuiTelInput />
+                </MultiTextFieldForm>
+                {/* <MultiTextFieldForm addButtonLabel={"Ajouter un numéro de téléphone"} textFieldLabel={"Numéro de téléphone"} /> */}
+              </Grid>
+            </Grid>
+            <br></br>
             <AnimateButton>
               <Button
                 size="small"
@@ -122,75 +214,28 @@ const DoctorProfile = () => {
             </AnimateButton>
           </Box>
         </MyAccordion>
-
-        {/* Accordion 2 */}
-        <MyAccordion title={"Informations professionnelles"}>
+        {/* Accordion 3 */}
+        <MyAccordion title={"Horaires d'ouverture"}>
           <Box>
             <Grid container spacing={2} sx={{ marginTop: "3px" }}>
               <Grid sx={{ width: "30%", margin: "10px" }} item xs={12} md={4}>
-                Spécialité
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Autocomplete
-                  id="tags-filled"
-                  options={specialities.map((option) => option.label)}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      id="filled-hidden-label-small"
-                      defaultValue=" "
-                      size="small"
-                      placeholder="Spécialité"
-                      sx={{ width: "70%" }}
-                    />
-                  )}
-                />
-              </Grid>
-            </Grid>
-
-            <Grid container spacing={2} sx={{ marginTop: "3px" }}>
-              <Grid sx={{ width: "30%", margin: "10px" }} item xs={12} md={4}>
-                Éducation
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  hiddenLabel
-                  multiline
-                  id="filled-hidden-label-small"
-                  size="small"
-                  placeholder="Dites-nous où avez-vous étudié, quand et d'où avez-vous obtenu votre diplôme"
-                  sx={{ width: "70%" }}
-                />
-              </Grid>
-            </Grid>
-
-            <Grid container spacing={2} sx={{ marginTop: "3px" }}>
-              <Grid sx={{ width: "30%", margin: "10px" }} item xs={12} md={4}>
-                Assurance(s)
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <MultiTextFieldForm buttonTitle={"Ajouter une assurance "}>
-                  <TextField
-                    hiddenLabel
-                    id="filled-hidden-label-small"
-                    size="small"
-                    placeholder="Nom de l'assurance"
-                    sx={{ width: "70%" }}
-                  />
-                </MultiTextFieldForm>
-              </Grid>
-            </Grid>
-            <br></br>
-
-            <Grid container spacing={2} sx={{ marginTop: "3px" }}>
-              <Grid sx={{ width: "30%", margin: "10px" }} item xs={12} md={4}>
-                Horaires d'ouverture
+                Editer les horaires d'ouverture de votre cabinet
               </Grid>
               <Grid item xs={12} md={6}>
                 {/* open time table */}
                 <EditOpenTimes></EditOpenTimes>
               </Grid>
             </Grid>
+            <AnimateButton>
+              <Button
+                size="small"
+                type="submit"
+                variant="contained"
+                color="secondary"
+              >
+                Save
+              </Button>
+            </AnimateButton>
           </Box>
         </MyAccordion>
       </div>
